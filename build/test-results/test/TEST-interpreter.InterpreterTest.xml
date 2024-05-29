@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="interpreter.InterpreterTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-05-27T14:18:09" hostname="WVDEWOBMC003560" time="0.031">
+  <properties/>
+  <testcase name="increases previously declared value by 1()" classname="interpreter.InterpreterTest" time="0.024"/>
+  <testcase name="jumps to correct commands according to index()" classname="interpreter.InterpreterTest" time="0.001"/>
+  <testcase name="moves value to correct position()" classname="interpreter.InterpreterTest" time="0.0"/>
+  <testcase name="decreases previously declared value by 1()" classname="interpreter.InterpreterTest" time="0.0"/>
+  <testcase name="jumps to correct commands and executes accordingly2()" classname="interpreter.InterpreterTest" time="0.0"/>
+  <testcase name="copies value of existing variable into new variable()" classname="interpreter.InterpreterTest" time="0.0"/>
+  <testcase name="jumps to correct commands and executes accordingly()" classname="interpreter.InterpreterTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

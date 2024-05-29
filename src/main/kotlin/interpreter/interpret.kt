@@ -1,5 +1,10 @@
 package de.volkswagen.interpreter
 
-fun parse(program: Array<String>): Map<String, Int> {
-    return Processor().process(program)
+import de.volkswagen.interpreter.computer.Processor
+
+fun interpret(program: String): String? {
+    val code = program.split("\n").toTypedArray()
+    val processor = Processor()
+    processor.process(code)
+    return processor.print()
 }

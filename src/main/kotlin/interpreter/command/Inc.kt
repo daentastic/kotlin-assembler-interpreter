@@ -1,6 +1,6 @@
 package de.volkswagen.interpreter.command
 
-import de.volkswagen.interpreter.Memory
+import de.volkswagen.interpreter.computer.Memory
 
 class Inc(text: String) : Command {
     private val variable = text.split(" ")[1]
