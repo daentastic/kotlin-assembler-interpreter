@@ -11,7 +11,7 @@ class CallTest {
         // Given
         val memory = Memory()
         // When
-        Call(5).execute(memory)
+        Call("5").execute(memory)
         // Then
         assertEquals(5, memory.commandPointer.current)
     }

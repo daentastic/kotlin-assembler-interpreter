@@ -12,7 +12,7 @@ class MovTest {
         // Given
         val memory = Memory()
         // When
-        Mov("mov a 5").execute(memory)
+        Mov("a 5").execute(memory)
         // Then
         assertEquals(mapOf("a" to 5), memory.content)
 
@@ -22,9 +22,9 @@ class MovTest {
     fun `copies value of existing variable into new variable`() {
         // Given
         val memory = Memory()
-        Mov("mov a 5").execute(memory)
+        Mov("a 5").execute(memory)
         // When
-        Mov("mov b a").execute(memory)
+        Mov("b a").execute(memory)
         // Then
         assertEquals(mapOf("a" to 5,"b" to 5), memory.content)
 

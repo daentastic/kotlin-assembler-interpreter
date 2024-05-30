@@ -12,7 +12,7 @@ class LineTest {
         val line = Line(";mov b a")
         // When
         // Then
-      assertEquals("", line.get())
+      assertEquals("", line.withoutComment())
     }
 
     @Test
@@ -21,6 +21,6 @@ class LineTest {
         val line = Line("inc a ; inc a")
         // When
         // Then
-        assertEquals("inc a", line.get())
+        assertEquals("inc a", line.withoutComment())
     }
 }

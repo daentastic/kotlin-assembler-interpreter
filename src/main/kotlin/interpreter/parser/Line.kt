@@ -1,14 +1,14 @@
 package de.volkswagen.interpreter.parser
 
-class Line(text: String) {
+class Line(private val text: String) {
 
-    private val commandLine = text.withoutComment()
-
-    fun get() = commandLine
+    fun withoutComment() = text.withoutComment()
 
     private fun String.withoutComment() = this.split(";").first().trim()
 
-    fun commandName() = commandLine.split(" ").first().lowercase()
+    fun commandName() = this.withoutComment().split(" ").first().lowercase().trim()
+
+    fun arguments() = this.withoutComment().replace(commandName(), "").trim()
 
     fun subroutineName() = if (isSubroutineStart()) commandName().dropLast(1) else ""
 

@@ -1,20 +1,21 @@
 package interpreter.command
 
+import de.volkswagen.interpreter.command.Mul
 import de.volkswagen.interpreter.computer.Memory
-import de.volkswagen.interpreter.command.Inc
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-class IncTest {
+class MulTest {
 
     @Test
-    fun `increases previously declared value by 1`() {
+    fun `multiplies two variables`() {
         // Given
         val memory = Memory()
-        memory.set("a", 5)
+        memory.set("a", 10)
+        memory.set("b", 2)
         // When
-        Inc("a").execute(memory)
+        Mul("a b").execute(memory)
         // Then
-        assertEquals(mapOf("a" to 6), memory.content)
+        assertEquals(20, memory.content["a"])
     }
 }

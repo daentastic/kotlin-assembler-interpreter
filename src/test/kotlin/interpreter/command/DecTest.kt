@@ -13,7 +13,7 @@ class DecTest {
         val memory = Memory()
         memory.set("a", 5)
         // When
-        Dec("dec a").execute(memory)
+        Dec("a").execute(memory)
         // Then
         assertEquals(mapOf("a" to 4), memory.content)
     }

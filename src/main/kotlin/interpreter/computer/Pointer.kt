@@ -3,6 +3,10 @@ package de.volkswagen.interpreter.computer
 class Pointer {
     private val history = mutableListOf<Int>()
 
+    companion object {
+        val end = Int.MIN_VALUE
+    }
+
     var current = 0
         private set
 

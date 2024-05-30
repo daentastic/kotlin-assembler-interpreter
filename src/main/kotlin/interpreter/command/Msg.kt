@@ -4,9 +4,9 @@ import de.volkswagen.interpreter.computer.Memory
 
 class Msg(text: String) : Command {
     private val elements = text
-        .replace("msg", "")
         .trim()
         .split(",")
+        .map { it.trim() }
 
     override fun execute(memory: Memory) {
         memory.output.add(elements

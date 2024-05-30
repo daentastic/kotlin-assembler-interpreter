@@ -4,16 +4,17 @@ class Memory {
     internal val content = mutableMapOf<String, Int>()
     internal var commandPointer = Pointer()
     internal val output = Output()
+    internal var lastCompare: Int? = null
 
 
     internal fun valueOf(variable: String) =
-        if (variable.isNumeric()) {
-            variable.toInt()
+        if (variable.trim().isNumeric()) {
+            variable.trim().toInt()
         } else {
-            if (variable.isNegative()) {
-                content[variable.substring(1)]!! * -1
+            if (variable.trim().isNegative()) {
+                content[variable.trim().substring(1)]!! * -1
             } else {
-                content[variable]!!
+                content[variable.trim()]!!
             }
         }
 

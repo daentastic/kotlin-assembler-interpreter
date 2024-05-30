@@ -13,7 +13,7 @@ class JnzTest {
         val memory = Memory()
         memory.set("a", 1)
         // When
-        Jnz("jnz a -1").execute(memory)
+        Jnz("a -1").execute(memory)
         // Then
         assertEquals(-2, memory.commandPointer.current)
     }

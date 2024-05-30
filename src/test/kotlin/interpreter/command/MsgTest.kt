@@ -13,7 +13,7 @@ class MsgTest {
         val memory = Memory()
         memory.set("a", 3)
         // When
-        Msg("msg a").execute(memory)
+        Msg("a").execute(memory)
         // Then
         assertEquals("3", memory.output.get())
     }
@@ -24,7 +24,7 @@ class MsgTest {
         val memory = Memory()
         memory.set("a", 3)
         // When
-        Msg("msg 'the Result of a is: ', a").execute(memory)
+        Msg("'the Result of a is: ', a").execute(memory)
         // Then
         assertEquals("the Result of a is: 3", memory.output.get())
     }

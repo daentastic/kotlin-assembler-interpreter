@@ -1,6 +1,7 @@
 package de.volkswagen.interpreter.command
 
 import de.volkswagen.interpreter.computer.Memory
+import de.volkswagen.interpreter.computer.Pointer
 
 class End : Command {
     override fun execute(memory: Memory) {
@@ -9,6 +10,6 @@ class End : Command {
     }
 
     private fun stopProgram(memory: Memory) {
-        memory.commandPointer.jumpTo(Int.MIN_VALUE)
+        memory.commandPointer.jumpTo(Pointer.end)
     }
 }

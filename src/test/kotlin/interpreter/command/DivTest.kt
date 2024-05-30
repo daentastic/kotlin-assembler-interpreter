@@ -8,24 +8,24 @@ import org.junit.jupiter.api.Test
 class DivTest {
 
     @Test
-    fun `devides varibale`() {
+    fun `divides variable`() {
         // Given
         val memory = Memory()
         memory.set("a", 10)
         // When
-        Div("div a 2").execute(memory)
+        Div("a 2").execute(memory)
         // Then
         assertEquals(5, memory.content["a"])
     }
 
     @Test
-    fun `devides varibale by other variable`() {
+    fun `divides variable by other variable`() {
         // Given
         val memory = Memory()
         memory.set("a", 11)
         memory.set("b", 3)
         // When
-        Div("div a b").execute(memory)
+        Div("a b").execute(memory)
         // Then
         assertEquals(3, memory.content["a"])
     }

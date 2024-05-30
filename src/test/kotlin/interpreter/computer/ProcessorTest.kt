@@ -79,4 +79,25 @@ class ProcessorTest {
         kotlin.test.assertEquals("a is: -10", processor.print())
     }
 
+    @Test
+    fun `jumps if compare is not equal`() {
+        // Given
+        val processor =Processor()
+        // When
+        val result = processor.process(
+            arrayOf(
+                "mov a -10",
+                "mov b 1",
+                "cmp a b",
+                "jne foo",
+                "end",
+                "foo:",
+                "inc a",
+                "ret"
+            )
+        )
+        // Then
+        kotlin.test.assertEquals(mapOf("a" to -9, "b" to 1), result)
+    }
+
 }

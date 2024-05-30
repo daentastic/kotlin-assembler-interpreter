@@ -1,6 +1,9 @@
 package de.volkswagen.interpreter.parser
 
-import de.volkswagen.interpreter.command.*
+import de.volkswagen.interpreter.command.Command
+import de.volkswagen.interpreter.command.JumpCommand
+import de.volkswagen.interpreter.command.commandFunction
+
 
 class Parser {
 
@@ -10,31 +13,26 @@ class Parser {
         lines = program.lines()
         return program
             .map { Line(it) }
-            .filter { it.get().isNotBlank() }
+            .filter { it.withoutComment().isNotBlank() }
             .map { it.toCommand() }
     }
 
     private fun Array<String>.lines() = this
         .map { Line(it) }
-        .filter { it.get().isNotBlank() }
+        .filter { it.withoutComment().isNotBlank() }
 
-    private fun Line.toCommand(): Command = when (this.commandName()) {
-        "mov" -> Mov(this.get())
-        "inc" -> Inc(this.get())
-        "dec" -> Dec(this.get())
-        "jnz" -> Jnz(this.get())
-        "msg" -> Msg(this.get())
-        "call" -> Call(this.pointer())
-        "ret" -> Ret()
-        "end" -> End()
-        "div" -> Div(this.get())
-        else -> Skip()
+
+    private fun Line.toCommand(): Command {
+        val commandFunction = commandName().commandFunction()
+        val args = if (commandFunction("dummy string with several words") is JumpCommand) pointer().toString()
+        else arguments()
+        return commandFunction(args)
     }
 
-    private fun Line.pointer() = pointerOf()[this.get().split(" ")[1]]!!
+    private fun Line.pointer() = pointerOf(this.withoutComment().split(" ")[1])
 
-    private fun pointerOf(): Map<String, Int> = lines.indices
+    private fun pointerOf(subroutineName: String): Int = lines.indices
         .filter { lines[it].isSubroutineStart() }
         .groupBy { lines[it].subroutineName() }
-        .mapValues { it.value.first() }
+        .mapValues { it.value.first() }[subroutineName]!!
 }
